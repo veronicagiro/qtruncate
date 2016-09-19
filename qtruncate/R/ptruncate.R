@@ -43,8 +43,6 @@ ptruncate <-
        probability <- log(probability)
      }
 
-
-
       return(probability)
     }
 

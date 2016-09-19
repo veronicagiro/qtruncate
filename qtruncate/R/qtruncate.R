@@ -1,8 +1,6 @@
 qtruncate <-
   function (dist){
 
-    #dist <- deparse(substitute(dist))
-
     qdist=paste("q", dist, sep = "")
     pdist=paste("p", dist, sep = "")
 
@@ -17,7 +15,7 @@ qtruncate <-
       if (L > U) stop("U must be greater than or equal to L")
 
       call <- as.list(match.call())[-1]
-      #qargs <- c(qargs[!is.element(names(qargs), names(call))], call[is.element(names(call), names(qargs))])
+
       qargs <- intersect_args(x = qargs, y = call)
       qargs$log.p <- NULL
       qargs$lower.tail <- NULL
@@ -35,22 +33,21 @@ qtruncate <-
       if ( do.call("pdist", as.list(pUargs)) == 0) stop("U below lower support limit")
       if ( do.call("pdist", as.list(pLargs)) == 1) stop("L above upper support limit")
 
-      qargs$p <- do.call("pdist", as.list(pLargs)) + p * (do.call("pdist", as.list(pUargs)) - do.call("pdist", as.list(pLargs)))
-
+      if(log.p){
+        p <- exp(p)
+      }
 
       if(lower.tail == F){
-        qargs$p <- 1 - qargs$p
+        p <- 1 - p
       }
 
-
-      if(log.p){
-       qargs$p <- log(qargs$p)
-      }
+      #qargs$p <- do.call("pdist", as.list(pLargs)) + p * (do.call("pdist", as.list(pUargs)) - do.call("pdist", as.list(pLargs)))
+      qargs$p <- do.call("pdist", as.list(pLargs)) + p * (do.call("pdist", as.list(pUargs)) - do.call("pdist", as.list(pLargs)))
 
       qp <- do.call("qdist", as.list(qargs))
       #quantile <- pmin(pmax(L,do.call("qdist", as.list(qargs))),U)
 
-      quantile <- pmin(pmax(L, qp ), U)
+      quantile <- pmin(pmax(L, qp), U)
 
       return(quantile)
 
