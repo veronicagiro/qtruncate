@@ -36,4 +36,9 @@ random number generation function for the truncated specified distribution
 \description{
 Generate random number from a truncate distribution
 }
+\examples{
+# t distribution
+rtt <- rtruncate("t")
+rtt(n = 10, df = 4, L = 2, U = 5)
+}
 

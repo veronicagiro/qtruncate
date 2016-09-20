@@ -37,4 +37,11 @@ quantile function of the truncated specified distribution
 This function generates the quantile function of a truncated specified distribution.
 Passing the distribution conventional name as argument, it returns the quantile function of the truncated specified distribution.
 }
+\examples{
+# Weibull distribution
+qtweibull <-qtruncate("weibull")
+qtweibull(p = 1:9/10, shape = 1, scale = 1.5, L = 3, U = 6)
+qtweibull(p = 1:9/10, shape = 1, scale = 1.5,  L = 3, U = 6, lower.tail = F, log.p = F)
+qtweibull(p = log(1:9/10), shape = 1, scale = 1.5, log.p = T, L = 3, U = 6, lower.tail = F)
+}
 

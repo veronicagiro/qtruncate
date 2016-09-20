@@ -34,6 +34,14 @@ ptruncate(dist)
 probability function of the truncated specified distribution
 }
 \description{
-Compute probability function of a truncated distribution
+This function generates the probability function of a truncated specified distribution.
+Passing the distribution conventional name as argument, it returns the probability function of the truncated specified distribution.
+}
+\examples{
+# Normal distribution
+ptnorm <-ptruncate("norm")
+ptnorm(q = 1:10, mean = 3, sd = 2, L = 2, U = 6)
+ptnorm(q = 1:10, mean = 3, sd = 2, L = 2, U = 6, log.p = T)
+ptnorm(q = 1:10, mean = 3, sd = 2, L = 2, U = 6, log.p = T, lower.tail = F)
 }
 

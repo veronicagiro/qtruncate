@@ -1,7 +1,7 @@
 Package: qdist
 Title: Function factories for truncated probability functions
 Version: 0.2.0
-Authors@R: Andrea Spano and Veronica Giro
+Authors: Andrea Spano and Veronica Giro
 Maintainer: Veronica Giro <veronica.giro@quantide.com>
 Description: Generate truncated density, probability, quantile and random
     functions from the correponding non truncated distribution function

@@ -34,6 +34,13 @@ dtruncate(dist)
 density function of the truncated specified distribution
 }
 \description{
-Compute density function of a truncated distribution
+This function generates the density function of a truncated specified distribution.
+Passing the distribution conventional name as argument, it returns the density function of the truncated specified distribution.
+}
+\examples{
+# Normal distribution
+dtnorm <-dtruncate("norm")
+dtnorm(x = 1:10, mean = 3, sd = 2, L = 2, U = 6)
+dtnorm(x = 1:10, mean = 3, sd = 2, L = 2, U = 6, log = T)
 }
 
