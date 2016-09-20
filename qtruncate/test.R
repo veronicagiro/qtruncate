@@ -44,7 +44,7 @@ qnorm(p = 1:9/10, mean = 3, sd = 2, log.p = T)
 
 
 qtweibull <-qtruncate("weibull")
-qtweibull(p = 1:9/10, shape = 1, scale = 1.5, log.p = F, L = 3, U = 6, lower.tail = F)
+qtweibull(p = 1:9/10, shape = 1, scale = 1.5,  L = 3, U = 6, lower.tail = F, log.p = F)
 x <- log(1:9/10)
 qtweibull(p = x, shape = 1, scale = 1.5, log.p = T)
 
