@@ -57,7 +57,7 @@ dtruncate <-
       dargs <- intersect_args(x = dargs, y = call)
       # log.p argument of original density function don't work for truncated output function
       # We set them as NULL, so this option is not considered and not computed by density original function
-      dargs$log <- NULL
+      dargs$log <- NULL  # comment if you choose to use log diff for compute density
 
       # intersect probability function and the call (ddist), giving to probability function arguments the values set to the corresponding arguments of the call (ddist)
       pargs <- intersect_args(x = pargs, y = call)
@@ -78,13 +78,22 @@ dtruncate <-
       dx <- do.call("ddist", as.list(dargs))
       pU <- do.call("pdist", as.list(pUargs))
       pL <- do.call("pdist", as.list(pLargs))
+
       # compute densities of the truncated distribution specified
       density[x > L & x <= U] <-  dx /(pU - pL)
 
+
+      # density[x > L & x <= U] <-if(log){
+      #    dx - log(pU - pL)
+      # }else{
+      #       dx /(pU - pL)
+      # }
+
       # log option: if it is specified as TRUE, the densities has to be returned as logarithms
-      if(log){
-        density <- log(density)
-      }
+       if(log){
+         density[x > L & x <= U] <- log(density[x > L & x <= U])
+       }
+
       #returns density values for truncated distributions
       return(density)
 

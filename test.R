@@ -2,8 +2,12 @@ require(qtruncate)
 
 ################################################################
 dtnorm <-dtruncate("norm")
-dtnorm(x = 1:10, mean = 3, sd = 2, log = F)
-dtnorm(x = 1:10, mean = 3, sd = 2, log = T)
+dtnorm(x = 1:10, mean = 3, sd = 2, L = 2, U = 4, log = F)
+dtnorm(x = 1:10, mean = 3, sd = 2, L = 2, U = 4,  log = T)
+
+###################
+
+
 
 dnorm(x = 1:10, mean = 3, sd = 2, log = F)
 dnorm(x = 1:10, mean = 3, sd = 2, log = T)
